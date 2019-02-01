@@ -55,9 +55,19 @@
                                     Login
                                 </button>
 
-                                <a href="login/github" class="btn btn-primary">
+                                <a href="login/github" class="btn btn-success">
                                   <!-- logo GitHub -->
                                     Login with GitHub
+                                </a>
+
+                                <a href="login/facebook" class="btn btn-primary">
+                                  <!-- logo GitHub -->
+                                    Login with FaceBook
+                                </a>
+
+                                <a href="login/google" class="btn btn-danger">
+                                  <!-- logo GitHub -->
+                                    Login with Google
                                 </a>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">

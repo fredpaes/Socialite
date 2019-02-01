@@ -29,6 +29,11 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+    // const $rs = [
+    //     'github' => 'GitHub',
+    //     'facebook' => 'Facebook',
+    //     'google' => 'Google+',
+    // ];
 
     /**
      * Create a new controller instance.
@@ -41,37 +46,30 @@ class LoginController extends Controller
     }
 
 
-    /**
-     * Redirect the user to the GitHub authentication page.
-     * @return \Illuminate\Http\Response
-     */
-    public function redirectToProvider()
-    {
-        return Socialite::driver('github')->redirect();
-    }
 
-    /**
-     * Obtain the user information from GitHub.
-     * @return \Illuminate\Http\Response
-     */
-    public function handleProviderCallback()
-    {
-        $githubUser = Socialite::driver('github')->user();
-
-        $user = User::where('provider_id', $githubUser->getId())->first();
-
-        if(!$user) {
-          // add user
-          $user = User::create([
-            'email' => $githubUser->getEmail(),
-            'name' => $githubUser->getName(),
-            'provider_id' => $githubUser->getId(),
-          ]);
-        }
-
-        // login user
-        Auth::login($user, true);
-
-        return redirect($this->redirectTo);
-    }
+    // public function redirectToProvider()
+    // {
+    //   return Socialite::driver('github')->redirect();
+    // }
+    //
+    // public function handleProviderCallback()
+    // {
+    //     $githubUser = Socialite::driver('github')->user();
+    //
+    //     $user = User::where('provider_id', $githubUser->getId())->first();
+    //
+    //     if(!$user) {
+    //       // add user
+    //       $user = User::create([
+    //         'email' => $githubUser->getEmail(),
+    //         'name' => $githubUser->getName(),
+    //         'provider_id' => $githubUser->getId(),
+    //       ]);
+    //     }
+    //
+    //     // login user
+    //     Auth::login($user, true);
+    //
+    //     return redirect($this->redirectTo);
+    // }
 }
